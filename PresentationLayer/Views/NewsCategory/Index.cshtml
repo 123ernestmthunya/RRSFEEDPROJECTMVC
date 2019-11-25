@@ -1,0 +1,120 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_FeedsLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="http://localhost:65520/Scripts/jquery-1.10.2.js"></script>
+    <link href="~/Content/FeedStyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                
+                    <div style="position:fixed;top:0;font-family:'Arial, Helvetica, sans-serif'" id="button-list">
+                        <button style="position:relative;top:120px;width:200px" type="button" class="btn btn-primary" value="category" data-toggle="collapse" data-target="#button-toggle" style="position:relative;top:40px">Category</button>
+                        <div id="button-toggle" class="collapse">
+                            <div style="position:relative;top:120px" class="btn-group-vertical">
+                                <button style="width:200px" type="button" id="btn" class="btn btn-primary">Green</button>
+                                <button style="width:200px" type="button" id="btn1" class="btn btn-primary">World</button>
+                                <button style="width:200px" type="button" id="btn2" class="btn btn-primary">South Africa</button>
+                                <button style="width:200px" type="button" id="btn3" class="btn btn-primary">Africa</button>
+                                <button style="width:200px" type="button" id="btn4" class="btn btn-primary">Top Stories</button>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+                <div class="col-md-10">
+
+                    <div id="list-position">
+                        <ul id="list"></ul>
+                    </div>
+
+                </div>
+            </div>
+</div>
+        </body>
+        </html>
+        <script type="text/javascript">
+            $('#btn').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:65516/api/NewsFeed/Green',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#list').empty();
+                        $.each(data, function (i, item) {
+                            var rows = "<li>" + "<img style='width: 100px;height:100px;' src=" + item.Image + ">" + "<a target=_blank href=" + item.Link + "> <strong> " + item.Title + " </strong> </a>" + "<em>" + item.Description + " " + "<mark>" + item.Pub_Date + "</mark>" + "</em>" + "</li>";
+                            $('#list').append(rows);
+                        });
+                    }
+                });
+            });
+            $('#btn1').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:65516/api/NewsFeed/World',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#list').empty();
+                        $.each(data, function (i, item) {
+                            var rows = "<li>" + "<img style='width: 100px;height:100px;' src=" + item.Image + ">" + "<a target=_blank href=" + item.Link + "> <strong> " + item.Title + " </strong> </a>" + "<em>" + item.Description + " " + "<mark>" + item.Pub_Date + "</mark>" + "</em>" + "</li>";
+                            $('#list').append(rows);
+                        });
+                    }
+                });
+            });
+            $('#btn2').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:65516/api/NewsFeed/SouthAfrica',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#list').empty();
+                        $.each(data, function (i, item) {
+                            var rows = "<li>" + "<img style='width: 100px;height:100px;' src=" + item.Image + ">" + "<a target=_blank href=" + item.Link + "> <strong> " + item.Title + " </strong> </a>" + "<em>" + item.Description + " " + "<mark>" + item.Pub_Date + "</mark>" + "</em>" + "</li>";
+                            $('#list').append(rows);
+                        });
+                    }
+                });
+            });
+            $('#btn3').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:65516/api/NewsFeed/Africa',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#list').empty();
+                        $.each(data, function (i, item) {
+                            var rows = "<li>" + "<img style='width: 100px;height:100px;' src=" + item.Image + ">" + "<a target=_blank href=" + item.Link + "> <strong> " + item.Title + " </strong> </a>" + "<em>" + item.Description + " " + "<mark>" + item.Pub_Date + "</mark>" + "</em>" + "</li>";
+                            $('#list').append(rows);
+                        });
+                    }
+                });
+            });
+            $('#btn4').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:65516/api/NewsFeed/TopStories',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#list').empty();
+                        $.each(data, function (i, item) {
+                            var rows = "<li>" + "<img style='width: 100px;height:100px;' src=" + item.Image + ">" + "<a target=_blank href=" + item.Link + "> <strong> " + item.Title + " </strong> </a>" + "<em>" + item.Description + " " + "<mark>" + item.Pub_Date + "</mark>" + "</em>" + "</li>";
+                            $('#list').append(rows);
+                        });
+                    }
+                });
+            });
+        </script>
